@@ -11,15 +11,14 @@
 
 ## 1. App identity
 
-- **App name:**
-- **Organization / legal entity:**
-- **Website:**
-- **Public repository (if any):**
-- **Primary contact:**
-- **Security / technical contact (optional):**
-- **Application-controlled PartyId(s):**
-  - <PartyId or namespace>
-  - <PartyId or namespace>
+- **App name:** RIZEScore
+- **Organization / legal entity:** T-RIZE Group
+- **Website:** [t-rize.io](https://www.t-rize.io/)
+- **Public repository (if any):** [github.com/T-RIZE-Group/canton-featured-apps](https://github.com/T-RIZE-Group/canton-featured-apps)
+- **Primary contact:** ceo@t-rize.io
+- **Security / technical contact (optional):** cto@t-rize.io
+- **Application-controlled PartyId(s):** 
+  - TRIZEGroup-RIZEScore::12206ab3bf15b14410220357d6a6375eb1015f2e7fade1deb449463c2f2a25304889
 
 (These are the PartyIds operated by the application that may anchor
 activity marker–relevant ledger state transitions.)
