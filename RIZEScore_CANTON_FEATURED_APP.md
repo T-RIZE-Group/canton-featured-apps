@@ -1,9 +1,6 @@
-# Canton Featured App – 00XX
+# RIZEScore Featured App
 
-> This document is a **descriptive record** for a Canton Featured App.
-> It is **non-governance**, **non-normative**, and does not define or modify any
-> Canton Improvement Proposal (CIP).
->
+> This document is a **descriptive record** for the RIZEScore Featured App.
 > This document is intended to support interpretability during normal operation
 > and during anomalous activity periods.
 
