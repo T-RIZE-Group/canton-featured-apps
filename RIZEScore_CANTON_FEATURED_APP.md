@@ -26,6 +26,7 @@ activity marker–relevant ledger state transitions.)
 
 RIZEScore is a Canton analytics and signaling application that converts publicly observable on-ledger activity into standardized, explainable indicators. It analyzes party interaction patterns (flows, counterparties, repetition, persistence) and publishes time-stamped Activity Marker signals when deterministic rule conditions are met. The result is a consistent on-ledger reference layer that supports interpretability and downstream monitoring integrations.
 
+IMPORTANT: This App is transitioning away from on-ledger Activity Markers and instead integrates with external parties explorers to provide richer, feature-complete signals without relying on these small marker submissions. This integration exposes rich metadata (signal type, computed metrics, context) for more transparency and reach.
 ---
 
 ## 3. Role of Canton Network
