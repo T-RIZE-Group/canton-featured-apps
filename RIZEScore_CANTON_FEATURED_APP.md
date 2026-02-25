@@ -157,4 +157,4 @@ RIZEScore limits synthetic or automated signal amplification through:
 ## 9. Changelog
 
 - 2026-01-28 — Initial version
-- 2026-02-10  — Update summary
+- 2026-02-25  — Update summary
