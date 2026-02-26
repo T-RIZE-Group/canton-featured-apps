@@ -17,8 +17,7 @@
 - **Application-controlled PartyId(s):** 
   - TRIZEGroup-RIZEScore::12206ab3bf15b14410220357d6a6375eb1015f2e7fade1deb449463c2f2a25304889
 
-(These are the PartyIds operated by the application that may anchor
-activity marker–relevant ledger state transitions.)
+(These are the PartyIds operated by the application that may anchor activity marker–relevant ledger state transitions.)
 
 ---
 
@@ -26,7 +25,8 @@ activity marker–relevant ledger state transitions.)
 
 RIZEScore is a Canton analytics and signaling application that converts publicly observable on-ledger activity into standardized, explainable indicators. It analyzes party interaction patterns (flows, counterparties, repetition, persistence) and publishes time-stamped Activity Marker signals when deterministic rule conditions are met. The result is a consistent on-ledger reference layer that supports interpretability and downstream monitoring integrations.
 
-IMPORTANT: This App is transitioning away from on-ledger Activity Markers and instead integrates with external parties explorers to provide richer, feature-complete signals without relying on these marker submissions. This integration exposes rich metadata (signal type, computed metrics, context) for more transparency and reach.
+**IMPORTANT:** This App is transitioning away from on-ledger Activity Markers and instead integrates with external parties explorers to provide richer, feature-complete signals without relying on these marker submissions. This integration exposes rich metadata (signal type, computed metrics, context) for more transparency and reach.
+
 ---
 
 ## 3. Role of Canton Network
@@ -49,18 +49,16 @@ Describe the application’s current operational usage of Canton Network.
 - **Application operational status:** Production
 - **Primary workflows on Canton:**  
   - Ingest finalized on-ledger activity and compute Party ID indicators capturing flows, counterparties, repetition, and persistence.
-  - Detect deviations via baseline-based rules and publish time-stamped Activity Markers from the application Party ID.
+  - Detect deviations via baseline-based rules and generate time-stamped signal events.
   - Surface signals in the UI and optionally deliver alerts and exports via APIs / email / webhook.
     
 ---
 
 ## 5. Featured App Activity Markers (CIP-0047)
 
-This section declares the **Featured App Activity Markers** emitted by the application,
-as defined in **CIP-0047** and applicable amendments.
+This section declares the **Featured App Activity Markers** emitted by the application, as defined in **CIP-0047** and applicable amendments.
 
-The information below is **declarative** and is provided to improve transparency,
-interpretability, and governance oversight of application activity on Canton Network.
+The information below is **declarative** and is provided to improve transparency, interpretability, and governance oversight of application activity on Canton Network.
 
 This document does **not** define, enforce, or modify activity marker mechanics.
 
@@ -68,9 +66,9 @@ This document does **not** define, enforce, or modify activity marker mechanics.
 
 ### 5.1 Ledger anchoring (descriptive)
 
-RIZEScore anchors signals to ledger finality to make them independently verifiable and reusable across the ecosystem. Signals are computed from publicly observable, finalized activity aggregated by Party ID; when a rule triggers, RIZEScore publishes an Activity Marker via a transaction attributable to the application-controlled PartyId(s).
+RIZEScore anchors signals to ledger finality to make them independently verifiable and reusable across the ecosystem. Signals are computed from publicly observable, finalized activity aggregated by Party ID; when a rule triggers, RIZEScore publishes time-stamped signals via a transaction attributable to the RIZEScore PartyId.
 
-The ledger publication is the canonical reference for timing and existence of the signal. Any notifications or UI displays are derived views that reference the on-ledger marker.
+The ledger publication is the canonical reference for timing and existence of the signal. Any notifications or UI displays are derived views that reference the corresponding publication.
 
 ---
 
@@ -79,6 +77,8 @@ The ledger publication is the canonical reference for timing and existence of th
 RIZEScore emits diagnostic Activity Markers representing rule-triggered signal events derived from finalized on-ledger activity. These markers do not represent asset issuance, settlement, custody activity, or direct economic transfers initiated by the application.
 
 Signal definitions (metrics, thresholds, severity bands, and interpretation criteria) are configuration-driven and may be co-defined with ecosystem participants through structured review processes. All configurations are deterministic and versioned; changes are reflected via policy_version to preserve interpretability over time.
+
+Note: The marker usage is being deprecated and transitioning towards integration with third-party explorers to highlight those events in addition to RIZEScore.
 
 #### Marker format
 
@@ -93,42 +93,9 @@ Notes: Represents a triggered integrity indicator for the referenced Party ID ov
 
 ---
 
-### 5.3 Non-emitting activities
-
-As a general principle, Featured App Activity Markers are not emitted for
-activity that does not represent an independent, finalized economic state
-transition on the ledger.
-
-The categories below illustrate common examples of such activity and are
-provided for clarity only.
-
-Illustrative examples include:
-
-- onboarding or account setup
-- configuration, reference data, or metadata updates
-- retries, failures, or rollback-related actions
-- cancellations, reversals, or voided workflows
-- internal operational, administrative, or maintenance actions
-
-This list is illustrative, descriptive, and explicitly non-exhaustive.
-
----
-
-## 6. Marker emission policy (app-specific)
+## 6. Marker emission policy
 
 RIZEScore emits Activity Markers only to publish rule-triggered diagnostic signals anchored to finalized ledger activity. Markers are not emitted for activity that does not correspond to a finalized, signal-eligible ledger state transition or that does not change the evaluated signal outcome.
-
-Illustrative examples include:
-
-- UI interactions, dashboard views, searches, exports, or report generation
-- API calls and off-ledger processing (ingestion, parsing, attribution, aggregation) when no signal is published
-- rule evaluations that do not meet trigger thresholds or noise floors
-- suppressed triggers due to rate limits or deduplication within the evaluation window
-- policy configuration changes, simulations, backtests, or recalculations (unless a signal publication transaction is submitted)
-- notification delivery (UI / email / webhook) and subscription management
-- retries, failures, rollbacks, cancellations, reversals, or non-finalized activity
-
-This list is illustrative, descriptive, and non-exhaustive.
 
 ---
 
@@ -157,4 +124,4 @@ RIZEScore limits synthetic or automated signal amplification through:
 ## 9. Changelog
 
 - 2026-01-28 — Initial version
-- 2026-02-25  — Update summary
+- 2026-02-26 — Latest Update
